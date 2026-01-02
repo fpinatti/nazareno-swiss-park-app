@@ -1,0 +1,30 @@
+[
+    {
+        "id": "1",
+        "day": 0,
+        "dayName": "Domingo",
+        "time": "10:00",
+        "label": "Culto de Adoração"
+    },
+    {
+        "id": "2",
+        "day": 0,
+        "dayName": "Domingo",
+        "time": "18:30",
+        "label": "Culto de Adoração"
+    },
+    {
+        "id": "4",
+        "day": 4,
+        "dayName": "Quinta-Feira",
+        "time": "19:30",
+        "label": "Culto de Oração"
+    },
+    {
+        "id": "5",
+        "day": 6,
+        "dayName": "Sábado",
+        "time": "19:30",
+        "label": "Livre Acesso (Jovens e Adolescentes)"
+    }
+]

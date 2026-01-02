@@ -1,0 +1,52 @@
+[
+    {
+        "id": "1",
+        "title": "Cultos de Adoração",
+        "date": "Todos os domingos",
+        "time": "10h e 18:30h",
+        "location": "Templo Principal",
+        "description": "Junte-se a nós para um tempo precioso de adoração, comunhão e aprendizado da Palavra de Deus.",
+        "imageUrl": "https://images.unsplash.com/photo-1438232992991-995b7058bbb3?q=80&w=1000&auto=format&fit=crop",
+        "tags": [
+            "home",
+            "culto"
+        ]
+    },
+    {
+        "id": "2",
+        "title": "Livre Acesso",
+        "date": "Sábados",
+        "time": "19:30h",
+        "location": "Salão Social",
+        "description": "Encontro de jovens e adolescentes com muita música, dinâmica e uma palavra específica para a nova geração.",
+        "imageUrl": "https://images.unsplash.com/photo-1523580494863-6f3031224c94?q=80&w=1000&auto=format&fit=crop",
+        "tags": [
+            "home",
+            "jovens"
+        ]
+    },
+    {
+        "id": "3",
+        "title": "Escola Bíblica",
+        "date": "Domingos",
+        "time": "09:00h",
+        "location": "Salas de Aula",
+        "description": "Um momento de aprofundamento bíblico para todas as idades, com classes específicas por faixa etária.",
+        "imageUrl": "https://images.unsplash.com/photo-1504052434569-70ad58ebb952?q=80&w=1000&auto=format&fit=crop",
+        "tags": [
+            "ensino"
+        ]
+    },
+    {
+        "id": "4",
+        "title": "Reunião de Oração",
+        "date": "Quintas-Feiras",
+        "time": "19:30h",
+        "location": "Templo Principal",
+        "description": "Momento de intercessão e busca espiritual em comunidade.",
+        "imageUrl": "https://images.unsplash.com/photo-1444333509421-92ed4c42bb8e?q=80&w=1000&auto=format&fit=crop",
+        "tags": [
+            "oracao"
+        ]
+    }
+]

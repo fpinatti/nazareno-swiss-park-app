@@ -74,7 +74,7 @@ export default function Ministries() {
       {/* Header */}
       <View className="px-6 py-4 flex-row items-center justify-between bg-white dark:bg-slate-800 z-10">
         <TouchableOpacity onPress={() => router.back()} className="p-2 rounded-full bg-gray-100 dark:bg-slate-700">
-          <Ionicons name="arrow-back" size={24} color="#333" />
+          <Ionicons name="arrow-back" size={24} color="currentColor" className="text-slate-800 dark:text-white" />
         </TouchableOpacity>
         <Text className="text-xl font-bold text-slate-800 dark:text-white">Ministérios</Text>
         <View className="w-10" />

@@ -15,21 +15,21 @@ const menuItems = [
   ];
 
   return (
-    <SafeAreaView className="flex-1 bg-black">
-      <View className="px-4 py-3 border-b border-gray-800">
-         <Text className="text-white text-xl font-bold">Mais</Text>
+    <SafeAreaView className="flex-1 bg-white dark:bg-black">
+      <View className="px-4 py-3 border-b border-gray-100 dark:border-gray-800">
+         <Text className="text-slate-900 dark:text-white text-xl font-bold">Mais</Text>
       </View>
       <ScrollView contentContainerClassName="p-4">
         {menuItems.map((item, index) => (
           <TouchableOpacity 
             key={index}
-            className="flex-row items-center bg-gray-900 p-4 rounded-lg mb-3"
+            className="flex-row items-center bg-slate-50 dark:bg-gray-900 p-4 rounded-xl mb-3 border border-gray-100 dark:border-gray-800"
             onPress={() => item.route && router.push(item.route as any)}
           >
             <Ionicons name={item.icon as any} size={24} color="#3b82f6" />
-            <Text className="text-white text-lg ml-4 font-semibold">{item.label}</Text>
+            <Text className="text-slate-900 dark:text-white text-lg ml-4 font-semibold">{item.label}</Text>
             <View className="flex-1" />
-            <Ionicons name="chevron-forward" size={20} color="#666" />
+            <Ionicons name="chevron-forward" size={20} color="#94a3b8" />
           </TouchableOpacity>
         ))}
       </ScrollView>

@@ -105,7 +105,7 @@ export default function PrayerRequest() {
       {/* Header */}
       <View className="px-6 py-4 flex-row items-center justify-between bg-white dark:bg-slate-800 shadow-sm z-10">
         <TouchableOpacity onPress={() => router.back()} className="p-2 rounded-full bg-gray-100 dark:bg-slate-700">
-          <Ionicons name="arrow-back" size={24} color="#333" />
+          <Ionicons name="arrow-back" size={24} color="currentColor" className="text-slate-800 dark:text-white" />
         </TouchableOpacity>
         <Text className="text-xl font-bold text-slate-800 dark:text-white">Pedidos de Oração</Text>
         <View className="w-10" /> 
