@@ -5,9 +5,10 @@ import * as Linking from 'expo-linking';
 import { Platform, ScrollView, Text, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import AvatarJuliano from '@/assets/images/juliano.avif';
-import AvatarUedson from '@/assets/images/uedson.avif';
-import { default as AvatarRicardo, default as AvatarWlamir } from '@/assets/images/wlamir.avif';
+import AvatarJuliano from '@/assets/images/juliano.webp';
+import AvatarUedson from '@/assets/images/uedson.webp';
+import AvatarWlamir from '@/assets/images/wlamir.webp';
+const AvatarRicardo = AvatarWlamir;
 
 const PASTORS = [
     {
