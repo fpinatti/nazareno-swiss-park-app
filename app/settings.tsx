@@ -1,5 +1,6 @@
 import { FontSize, usePreferenceStore } from '@/store/usePreferenceStore';
 import { Ionicons } from '@expo/vector-icons';
+import Constants from 'expo-constants';
 import { Stack, useRouter } from 'expo-router';
 import { ScrollView, Switch, Text, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -15,7 +16,16 @@ type SectionItemProps = {
   color?: string;
 };
 
-const SectionItem = ({ icon, label, value, isSwitch, switchValue, onSwitchChange, onPress, color = '#333' }: SectionItemProps) => {
+const SectionItem = ({
+  icon,
+  label,
+  value,
+  isSwitch,
+  switchValue,
+  onSwitchChange,
+  onPress,
+  color = '#333',
+}: SectionItemProps) => {
   const handlePress = () => {
     if (isSwitch && onSwitchChange) {
       onSwitchChange(!switchValue);
@@ -25,23 +35,23 @@ const SectionItem = ({ icon, label, value, isSwitch, switchValue, onSwitchChange
   };
 
   return (
-    <TouchableOpacity 
-      onPress={handlePress} 
+    <TouchableOpacity
+      onPress={handlePress}
       activeOpacity={isSwitch ? 0.7 : 0.7}
-      className="flex-row items-center py-4 border-b border-gray-100 dark:border-slate-700 last:border-0"
+      className="flex-row items-center border-b border-gray-100 py-4 last:border-0 dark:border-slate-700"
     >
-      <View className="w-10 h-10 rounded-full bg-gray-50 dark:bg-slate-700 items-center justify-center mr-4">
+      <View className="mr-4 h-10 w-10 items-center justify-center rounded-full bg-gray-50 dark:bg-slate-700">
         <Ionicons name={icon} size={20} color={color} />
       </View>
       <View className="flex-1">
-        <Text className="text-base font-medium text-slate-800 dark:text-slate-200">{label}</Text>
+        <Text className="text-base font-medium text-slate-800 dark:text-slate-200">
+          {label}
+        </Text>
       </View>
-      {value && (
-        <Text className="text-slate-500 mr-2">{value}</Text>
-      )}
+      {value && <Text className="mr-2 text-slate-500">{value}</Text>}
       {isSwitch ? (
-        <Switch 
-          value={switchValue} 
+        <Switch
+          value={switchValue}
           onValueChange={onSwitchChange}
           trackColor={{ false: '#e2e8f0', true: '#6366f1' }}
           // On web, sometimes clicks propagate strangely, so we ensure the switch is responsive
@@ -56,7 +66,8 @@ const SectionItem = ({ icon, label, value, isSwitch, switchValue, onSwitchChange
 
 export default function Settings() {
   const router = useRouter();
-  const { fontSize, setFontSize, isDarkMode, setDarkMode } = usePreferenceStore();
+  const { fontSize, setFontSize, isDarkMode, setDarkMode } =
+    usePreferenceStore();
   const isDark = isDarkMode;
 
   const handleToggle = (value: boolean) => {
@@ -72,37 +83,44 @@ export default function Settings() {
 
   return (
     <SafeAreaView className="flex-1 bg-gray-50 dark:bg-slate-900">
-      <Stack.Screen 
-        options={{ 
+      <Stack.Screen
+        options={{
           headerShown: false,
-        }} 
+        }}
       />
-      
+
       {/* Header */}
-      <View className="px-6 py-4 flex-row items-center bg-white dark:bg-slate-800 z-10">
+      <View className="z-10 flex-row items-center bg-white px-6 py-4 dark:bg-slate-800">
         <TouchableOpacity onPress={() => router.back()} className="mr-4">
-          <Ionicons name="arrow-back" size={24} color={isDark ? '#fff' : '#1e293b'} />
+          <Ionicons
+            name="arrow-back"
+            size={24}
+            color={isDark ? '#fff' : '#1e293b'}
+          />
         </TouchableOpacity>
-        <Text className="text-2xl font-bold text-slate-800 dark:text-white">Configurações</Text>
+        <Text className="text-2xl font-bold text-slate-800 dark:text-white">
+          Configurações
+        </Text>
       </View>
 
       <ScrollView className="flex-1 p-6" showsVerticalScrollIndicator={false}>
-        
         {/* Preferences Section */}
         <View className="mb-8">
-          <Text className="text-sm font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-widest mb-4 ml-2">Preferências</Text>
-          <View className="bg-white dark:bg-slate-800 rounded-3xl px-5 shadow-sm">
-            <SectionItem 
-              icon="moon-outline" 
-              label="Modo Escuro" 
-              isSwitch 
+          <Text className="mb-4 ml-2 text-sm font-semibold uppercase tracking-widest text-slate-500 dark:text-slate-400">
+            Preferências
+          </Text>
+          <View className="rounded-3xl bg-white px-5 shadow-sm dark:bg-slate-800">
+            <SectionItem
+              icon="moon-outline"
+              label="Modo Escuro"
+              isSwitch
               switchValue={isDarkMode}
               onSwitchChange={handleToggle}
               color="#6366f1"
             />
-            <SectionItem 
-              icon="text-outline" 
-              label="Tamanho da Fonte" 
+            <SectionItem
+              icon="text-outline"
+              label="Tamanho da Fonte"
               value={fontSize}
               onPress={cycleFontSize}
               color="#10B981"
@@ -110,10 +128,15 @@ export default function Settings() {
           </View>
         </View>
 
-        <View className="items-center mt-6 mb-8">
-          <Text className="text-slate-400 text-xs">Versão 1.0.0 (Build 124)</Text>
+        <View className="mb-8 mt-6 items-center">
+          <Text className="text-xs text-slate-400">
+            Versão {Constants.expoConfig?.version || '1.0.0'} (Build{' '}
+            {Constants.expoConfig?.ios?.buildNumber ||
+              Constants.expoConfig?.android?.versionCode ||
+              '1'}
+            )
+          </Text>
         </View>
-
       </ScrollView>
     </SafeAreaView>
   );

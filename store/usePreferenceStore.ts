@@ -45,6 +45,6 @@ export const usePreferenceStore = create<PreferenceState>()(
       onRehydrateStorage: () => (state) => {
         state?.setHasHydrated(true);
       },
-    }
-  )
+    },
+  ),
 );

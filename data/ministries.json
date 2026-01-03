@@ -1,0 +1,42 @@
+[
+  {
+    "id": "1",
+    "title": "Ministério Infantil",
+    "description": "Ensinando a próxima geração nos caminhos do Senhor com amor e diversão.",
+    "details": "Nosso ministério infantil oferece um ambiente seguro e acolhedor para crianças de todas as idades. Com aulas bíblicas interativas, músicas e brincadeiras, ajudamos os pequenos a construírem uma base sólida na fé cristã, enquanto se divertem e fazem novos amigos.",
+    "icon": "happy-outline",
+    "image": "https://images.unsplash.com/photo-1472162072942-cd5147eb3902?q=80&w=2669&auto=format&fit=crop"
+  },
+  {
+    "id": "2",
+    "title": "Juventude",
+    "description": "Empoderando jovens para viverem com ousadia por Cristo.",
+    "details": "A juventude é um movimento vibrante focado em conectar jovens com Deus e uns com os outros. Através de cultos dinâmicos, células e eventos sociais, encorajamos uma vida de propósito, amizade genuína e impacto na sociedade.",
+    "icon": "flame-outline",
+    "image": "https://images.unsplash.com/photo-1529070538774-1843cb3265df?q=80&w=2670&auto=format&fit=crop"
+  },
+  {
+    "id": "3",
+    "title": "Louvor e Adoração",
+    "description": "Conduzindo a igreja em adoração em espírito e em verdade.",
+    "details": "Nossa equipe de louvor tem o compromisso de criar uma atmosfera onde a presença de Deus é manifesta. Se você tem talentos musicais ou vocais e um coração adorador, venha fazer parte deste time que serve a igreja através da música e das artes.",
+    "icon": "musical-notes-outline",
+    "image": "https://images.unsplash.com/photo-1510915361408-d5a637458c2c?q=80&w=2670&auto=format&fit=crop"
+  },
+  {
+    "id": "4",
+    "title": "Missões",
+    "description": "Servindo nossa comunidade e espalhando o evangelho.",
+    "details": "O departamento de missões atua local e globalmente, levando o amor de Cristo através de ações práticas e evangelismo. Apoiamos missionários, realizamos viagens missionárias e projetos sociais para atender às necessidades dos menos favorecidos.",
+    "icon": "globe-outline",
+    "image": "https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?q=80&w=2670&auto=format&fit=crop"
+  },
+  {
+    "id": "5",
+    "title": "Homens de Valor",
+    "description": "Construindo relacionamentos fortes e fortalecendo a fé.",
+    "details": "Este ministério reúne homens para comunhão, estudo da Palavra e oração. Buscamos fortalecer o caráter cristão, o papel na família e na sociedade, encorajando uns aos outros a serem homens segundo o coração de Deus.",
+    "icon": "construct-outline",
+    "image": "https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?q=80&w=2669&auto=format&fit=crop"
+  }
+]

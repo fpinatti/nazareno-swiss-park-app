@@ -31,8 +31,8 @@ const NextEvent = () => {
       });
 
       // 1. Check for later today
-      const todayServices = sortedServices.filter(s => s.day === currentDay);
-      const nextToday = todayServices.find(s => {
+      const todayServices = sortedServices.filter((s) => s.day === currentDay);
+      const nextToday = todayServices.find((s) => {
         const [h, m] = s.time.split(':').map(Number);
         const serviceTimeValue = h * 60 + m;
         return serviceTimeValue > currentTimeValue;
@@ -44,7 +44,7 @@ const NextEvent = () => {
       }
 
       // 2. Check for next days this week
-      const nextDayService = sortedServices.find(s => s.day > currentDay);
+      const nextDayService = sortedServices.find((s) => s.day > currentDay);
       if (nextDayService) {
         setNextService(nextDayService);
         return;
@@ -66,9 +66,15 @@ const NextEvent = () => {
 
   return (
     <View className="flex-1 items-center justify-center border-r border-gray-200 dark:border-gray-600">
-        <Text className="text-slate-800 dark:text-white font-bold text-lg">{nextService.time}</Text>
-        <Text className="text-slate-500 dark:text-gray-500 text-xs text-center uppercase">{(nextService.dayName)}</Text>
-        <Text className="text-slate-500 dark:text-gray-400 text-xs text-center uppercase">{nextService.label}</Text>
+      <Text className="text-lg font-bold text-slate-800 dark:text-white">
+        {nextService.time}
+      </Text>
+      <Text className="text-center text-xs uppercase text-slate-500 dark:text-gray-500">
+        {nextService.dayName}
+      </Text>
+      <Text className="text-center text-xs uppercase text-slate-500 dark:text-gray-400">
+        {nextService.label}
+      </Text>
     </View>
   );
 };

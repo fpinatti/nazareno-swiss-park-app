@@ -19,40 +19,51 @@ interface EventCardProps {
 
 const EventCard: React.FC<EventCardProps> = ({ event }) => {
   return (
-    <View className="bg-white dark:bg-slate-800 rounded-xl overflow-hidden mb-5 shadow-sm border border-gray-100 dark:border-slate-700">
+    <View className="mb-5 overflow-hidden rounded-xl border border-gray-100 bg-white shadow-sm dark:border-slate-700 dark:bg-slate-800">
       {event.imageUrl ? (
-        <Image 
-          source={{ uri: event.imageUrl }} 
+        <Image
+          source={{ uri: event.imageUrl }}
           className="h-40 w-full"
           resizeMode="cover"
         />
       ) : (
-        <View className="h-40 bg-gray-200 dark:bg-slate-700 items-center justify-center">
+        <View className="h-40 items-center justify-center bg-gray-200 dark:bg-slate-700">
           <Ionicons name="image-outline" size={40} color="#9ca3af" />
         </View>
       )}
-      
+
       <View className="p-5">
-        <Text className="text-2xl font-bold text-gray-900 dark:text-white mb-2">{event.title}</Text>
-        
+        <Text className="mb-2 text-2xl font-bold text-gray-900 dark:text-white">
+          {event.title}
+        </Text>
+
         <View className="space-y-2">
           <View className="flex-row items-center">
             <Ionicons name="calendar-outline" size={16} color="#4b5563" />
-            <Text className="ml-2 text-gray-600 dark:text-gray-400 font-medium">{event.date}</Text>
+            <Text className="ml-2 font-medium text-gray-600 dark:text-gray-400">
+              {event.date}
+            </Text>
           </View>
-          
+
           <View className="flex-row items-center">
             <Ionicons name="time-outline" size={16} color="#4b5563" />
-            <Text className="ml-2 text-gray-600 dark:text-gray-400 font-medium">{event.time}</Text>
+            <Text className="ml-2 font-medium text-gray-600 dark:text-gray-400">
+              {event.time}
+            </Text>
           </View>
-          
+
           <View className="flex-row items-center">
             <Ionicons name="location-outline" size={16} color="#4b5563" />
-            <Text className="ml-2 text-gray-600 dark:text-gray-400 font-medium">{event.location}</Text>
+            <Text className="ml-2 font-medium text-gray-600 dark:text-gray-400">
+              {event.location}
+            </Text>
           </View>
         </View>
 
-        <Text className="text-gray-600 dark:text-gray-400 mt-4 leading-5" numberOfLines={3}>
+        <Text
+          className="mt-4 leading-5 text-gray-600 dark:text-gray-400"
+          numberOfLines={3}
+        >
           {event.description}
         </Text>
       </View>

@@ -1,22 +1,22 @@
 [
-    {
-        "date": "2024-12-31",
-        "verse": "Entregue o seu caminho ao Senhor; confie nele, e Ele agirá.",
-        "reference": "Salmos 37:5"
-    },
-    {
-        "date": "2025-01-01",
-        "verse": "Porque sou eu que conheço os planos que tenho para vocês', diz o Senhor, 'planos de fazê-los prosperar e não de causar dano, planos de dar a vocês esperança e um futuro.",
-        "reference": "Jeremias 29:11"
-    },
-    {
-        "date": "2025-01-02",
-        "verse": "O Senhor é o meu pastor; de nada terei falta.",
-        "reference": "Salmos 23:1"
-    },
-    {
-        "date": "2025-01-03",
-        "verse": "Aqui vai o versículo do dia",
-        "reference": "Aqui vai a referência"
-    }
+  {
+    "date": "2024-12-31",
+    "verse": "Entregue o seu caminho ao Senhor; confie nele, e Ele agirá.",
+    "reference": "Salmos 37:5"
+  },
+  {
+    "date": "2025-01-01",
+    "verse": "Porque sou eu que conheço os planos que tenho para vocês', diz o Senhor, 'planos de fazê-los prosperar e não de causar dano, planos de dar a vocês esperança e um futuro.",
+    "reference": "Jeremias 29:11"
+  },
+  {
+    "date": "2025-01-02",
+    "verse": "O Senhor é o meu pastor; de nada terei falta.",
+    "reference": "Salmos 23:1"
+  },
+  {
+    "date": "2025-01-03",
+    "verse": "Respondeu Jesus: \"Eu sou o caminho, a verdade e a vida. Ninguém vem ao Pai, a não ser por mim.\"",
+    "reference": "João 14:6"
+  }
 ]

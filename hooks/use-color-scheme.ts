@@ -10,7 +10,7 @@ export function useColorScheme() {
     if (_hasHydrated) {
       const targetScheme = isDarkMode ? 'dark' : 'light';
       setColorScheme(targetScheme);
-      
+
       // On web, NativeWind sometimes needs help syncing the 'dark' class to the document element
       if (typeof document !== 'undefined') {
         if (isDarkMode) {

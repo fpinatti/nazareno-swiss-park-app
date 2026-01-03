@@ -1,4 +1,4 @@
-const BASE_URL = process.env.EXPO_PUBLIC_WORDPRESS_BASEURL || ""
+const BASE_URL = process.env.EXPO_PUBLIC_WORDPRESS_BASEURL || '';
 
 interface WPPost {
   id: number;
@@ -11,7 +11,9 @@ interface WPPost {
 
 export const fetchPosts = async (page = 1, per_page = 5): Promise<WPPost[]> => {
   try {
-    const response = await fetch(`${BASE_URL}/posts?page=${page}&per_page=${per_page}`);
+    const response = await fetch(
+      `${BASE_URL}/posts?page=${page}&per_page=${per_page}`,
+    );
     if (!response.ok) throw new Error('Network response was not ok');
     const data = await response.json();
     return data;
@@ -26,7 +28,9 @@ export const fetchEvents = async (): Promise<any[]> => {
   try {
     // Example: Fetch from category 'events' (id 5 usually, depends on WP setup)
     // Or custom post type 'event' -> /wp/v2/event
-    const response = await fetch(`${BASE_URL}/posts?categories=EVENTS_CATEGORY_ID`); 
+    const response = await fetch(
+      `${BASE_URL}/posts?categories=EVENTS_CATEGORY_ID`,
+    );
     if (!response.ok) throw new Error('Network response was not ok');
     const data = await response.json();
     return data;
@@ -37,10 +41,10 @@ export const fetchEvents = async (): Promise<any[]> => {
 };
 
 export const fetchVerseOfDay = async () => {
-   // Maybe fetch from a specific plugin endpoint or services like BibleAPI
-   // Implementation depends on backend
-   return {
-       text: "Entregue o seu caminho ao Senhor; confie nele, e Ele agirá.",
-       reference: "Salmos 37:5"
-   };
+  // Maybe fetch from a specific plugin endpoint or services like BibleAPI
+  // Implementation depends on backend
+  return {
+    text: 'Entregue o seu caminho ao Senhor; confie nele, e Ele agirá.',
+    reference: 'Salmos 37:5',
+  };
 };

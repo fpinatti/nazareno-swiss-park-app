@@ -64,11 +64,11 @@ export const BIBLE_BOOKS = [
   { name: '2 João', abbrev: '2jo', chapters: 1 },
   { name: '3 João', abbrev: '3jo', chapters: 1 },
   { name: 'Judas', abbrev: 'jd', chapters: 1 },
-  { name: 'Apocalipse', abbrev: 'ap', chapters: 22 }
+  { name: 'Apocalipse', abbrev: 'ap', chapters: 22 },
 ];
 
 export const BIBLE_VERSIONS = [
   { id: 'nvi', name: 'NVI', label: 'Nova Versão Internacional' },
   { id: 'acf', name: 'ACF', label: 'Almeida Corrigida Fiel' },
-  { id: 'aa', name: 'AA', label: 'Almeida Atualizada' }
+  { id: 'aa', name: 'AA', label: 'Almeida Atualizada' },
 ];

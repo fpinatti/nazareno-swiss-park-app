@@ -7,7 +7,11 @@ const BIBLE_VERSIONS_DATA: Record<string, any> = {
   aa: require('../data/bible/pt_aa.json'),
 };
 
-export async function getBibleChapter(versionId: string, bookAbbrev: string, chapter: number) {
+export async function getBibleChapter(
+  versionId: string,
+  bookAbbrev: string,
+  chapter: number,
+) {
   const bible = BIBLE_VERSIONS_DATA[versionId];
   if (!bible) throw new Error('Bible version not found in bundle');
 
@@ -21,10 +25,9 @@ export async function getBibleChapter(versionId: string, bookAbbrev: string, cha
 }
 
 export function getBookName(abbrev: string) {
-  return BIBLE_BOOKS.find(b => b.abbrev === abbrev)?.name || abbrev;
+  return BIBLE_BOOKS.find((b) => b.abbrev === abbrev)?.name || abbrev;
 }
 
 export function getBookChapters(abbrev: string) {
-  return BIBLE_BOOKS.find(b => b.abbrev === abbrev)?.chapters || 0;
+  return BIBLE_BOOKS.find((b) => b.abbrev === abbrev)?.chapters || 0;
 }
-
