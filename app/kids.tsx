@@ -4,12 +4,12 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { Stack, useRouter } from 'expo-router';
 import React, { useState } from 'react';
 import {
-    Dimensions,
-    Image,
-    ScrollView,
-    Text,
-    TouchableOpacity,
-    View,
+  Dimensions,
+  Image,
+  ScrollView,
+  Text,
+  TouchableOpacity,
+  View,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import YoutubePlayer from 'react-native-youtube-iframe';
@@ -114,7 +114,7 @@ export default function KidsPage() {
         </View>
 
         {/* Section Title */}
-        <View className="px-5 pt-6 pb-3">
+        <View className="px-5 pb-3 pt-6">
           <Text className="text-xl font-bold text-slate-900 dark:text-white">
             Mais Vídeos
           </Text>
@@ -198,7 +198,7 @@ export default function KidsPage() {
         </View>
 
         {/* Fun Footer Section */}
-        <View className="mx-4 mt-4 mb-6 overflow-hidden rounded-3xl">
+        <View className="mx-4 mb-6 mt-4 overflow-hidden rounded-3xl">
           <LinearGradient
             colors={isDarkMode ? ['#831843', '#6b21a8'] : ['#f472b6', '#c084fc']}
             start={{ x: 0, y: 0 }}
