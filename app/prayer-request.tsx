@@ -109,7 +109,7 @@ export default function PrayerRequest() {
   );
 
   return (
-    <SafeAreaView className="flex-1 bg-gray-50 dark:bg-slate-900">
+    <SafeAreaView className="flex-1 bg-gray-50 dark:bg-black">
       <Stack.Screen
         options={{
           headerShown: false,

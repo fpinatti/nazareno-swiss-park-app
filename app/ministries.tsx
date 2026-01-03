@@ -34,14 +34,12 @@ export default function Ministries() {
   };
 
   return (
-    <SafeAreaView className="flex-1 bg-gray-50 dark:bg-slate-900">
+    <SafeAreaView className="flex-1 bg-gray-50 dark:bg-black">
       <Stack.Screen
         options={{
           headerShown: false,
         }}
       />
-
-      {/* Header */}
       {/* Header */}
       <View className="z-10 flex-row items-center bg-white px-6 py-4 dark:bg-slate-800">
         <TouchableOpacity onPress={() => router.back()} className="mr-4">
@@ -72,7 +70,7 @@ export default function Ministries() {
             Descubra seu lugar para servir e crescer.
           </Text>
 
-          <View className="space-y-6">
+          <View className="space-y-6 gap-4">
             {MINISTRIES.map((item) => {
               const isExpanded = expandedId === item.id;
 

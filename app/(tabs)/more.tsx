@@ -10,6 +10,7 @@ export default function MoreScreen() {
     { label: 'Bíblia', icon: 'book-outline', route: '/bible' },
     { label: 'Dízimos e Ofertas', icon: 'heart-outline', route: '/giving' },
     { label: 'Ministérios', icon: 'people-outline', route: '/ministries' },
+    { label: 'Kids', icon: 'happy-outline', route: '/kids' },
     {
       label: 'Pedidos de Oração',
       icon: 'chatbox-ellipses-outline',

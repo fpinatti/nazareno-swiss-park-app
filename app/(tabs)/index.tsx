@@ -4,11 +4,21 @@ import EventCard, { Event } from '@/components/EventCard';
 import NextEvent from '@/components/NextEvent';
 import eventsData from '@/data/events.json';
 import { Link, useRouter } from 'expo-router';
+import { useVideoPlayer, VideoView } from 'expo-video';
 import { Image, ScrollView, Text, TouchableOpacity, View } from 'react-native';
+
 import { SafeAreaView } from 'react-native-safe-area-context';
+
+const videoSource = require('../../assets/videos/hero-background.mp4');
 
 export default function HomeScreen() {
   const router = useRouter();
+  const player = useVideoPlayer(videoSource, (player) => {
+    player.loop = true;
+    player.muted = true;
+    player.play();
+  });
+
 
   return (
     <SafeAreaView className="flex-1 bg-white dark:bg-black" edges={['top']}>
@@ -19,10 +29,17 @@ export default function HomeScreen() {
           <View className="absolute inset-0 bg-gray-600">
             <Image
               source={heroImg}
-              className="h-full w-full"
+              className="absolute h-full w-full"
               resizeMode="cover"
             />
+            <VideoView
+              player={player}
+              style={{ width: '100%', height: '100%' }}
+              contentFit="cover"
+              nativeControls={false}
+            />
           </View>
+
           <View className="absolute inset-0 bg-black/40" />
 
           <View className="absolute inset-x-0 bottom-0 p-6">
