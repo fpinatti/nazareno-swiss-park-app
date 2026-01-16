@@ -29,7 +29,7 @@ interface Video {
 
 export default function KidsPage() {
   const router = useRouter();
-  const { isDarkMode } = usePreferenceStore();
+  const isDark = usePreferenceStore((state) => state.isDarkMode);
   const [selectedVideo, setSelectedVideo] = useState<Video>(KIDS_VIDEOS[0]);
   const [playing, setPlaying] = useState(false);
 
@@ -45,7 +45,7 @@ export default function KidsPage() {
   };
 
   return (
-    <SafeAreaView className="flex-1 bg-gradient-to-b from-purple-50 to-pink-50 dark:bg-neutral-900">
+    <SafeAreaView className={`flex-1 ${isDark ? 'dark bg-slate-800' : 'bg-white'}`}>
       <Stack.Screen options={{ headerShown: false }} />
 
       {/* Header */}
@@ -54,18 +54,18 @@ export default function KidsPage() {
           <Ionicons
             name="arrow-back"
             size={24}
-            color={isDarkMode ? '#fff' : '#1e293b'}
+            color={isDark ? '#fff' : '#1e293b'}
           />
         </TouchableOpacity>
         <View className="flex-row items-center">
+          <Text className="mr-2 text-2xl font-bold text-slate-800 dark:text-white">
+            Kids
+          </Text>
           <Ionicons
             name="happy-outline"
             size={24}
-            color={isDarkMode ? '#f472b6' : '#ec4899'}
+            color={isDark ? '#f472b6' : '#ec4899'}
           />
-          <Text className="ml-2 text-2xl font-bold text-slate-800 dark:text-white">
-            Kids
-          </Text>
         </View>
       </View>
 
@@ -75,7 +75,7 @@ export default function KidsPage() {
         showsVerticalScrollIndicator={false}
       >
         {/* Main Video Player */}
-        <View className="bg-black">
+        <View className="bg-slate-900">
           <View className="aspect-video w-full">
             <YoutubePlayer
               height={(width * 9) / 16}
@@ -87,13 +87,13 @@ export default function KidsPage() {
         </View>
 
         {/* Currently Playing Info */}
-        <View className="border-b border-gray-100 bg-white p-5 dark:border-neutral-800 dark:bg-neutral-900">
+        <View className="border-b border-gray-100 bg-white p-5 dark:border-neutral-800 dark:bg-slate-900">
           <View className="flex-row items-start">
             <View className="mr-3 rounded-full bg-pink-100 p-2 dark:bg-pink-900/30">
               <Ionicons
                 name="play-circle"
                 size={24}
-                color={isDarkMode ? '#f472b6' : '#ec4899'}
+                color={isDark ? '#f472b6' : '#ec4899'}
               />
             </View>
             <View className="flex-1">
@@ -136,7 +136,7 @@ export default function KidsPage() {
                   : 'border-transparent'
               }`}
             >
-              <View className="flex-row bg-white dark:bg-neutral-800">
+              <View className="flex-row bg-white dark:bg-gray-900">
                 {/* Thumbnail */}
                 <View className="relative h-24 w-36">
                   <Image
@@ -200,7 +200,7 @@ export default function KidsPage() {
         {/* Fun Footer Section */}
         <View className="mx-4 mb-6 mt-4 overflow-hidden rounded-3xl">
           <LinearGradient
-            colors={isDarkMode ? ['#831843', '#6b21a8'] : ['#f472b6', '#c084fc']}
+            colors={isDark ? ['#831843', '#6b21a8'] : ['#f472b6', '#c084fc']}
             start={{ x: 0, y: 0 }}
             end={{ x: 1, y: 1 }}
             className="p-6"

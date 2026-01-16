@@ -1,5 +1,6 @@
 import { HapticTab } from '@/components/haptic-tab';
 import { useColorScheme } from '@/hooks/use-color-scheme';
+import { usePreferenceStore } from '@/store/usePreferenceStore';
 import { Ionicons } from '@expo/vector-icons';
 import { Tabs } from 'expo-router';
 import React from 'react';
@@ -8,6 +9,7 @@ export default function TabLayout() {
   const { colorScheme } = useColorScheme();
   // Using a blue-ish tint similar to screenshot (although screenshot has white/blue mix)
   const activeColor = '#3b82f6';
+  const isDark = usePreferenceStore((state) => state.isDarkMode);
 
   return (
     <Tabs
@@ -16,8 +18,8 @@ export default function TabLayout() {
         headerShown: false,
         tabBarButton: HapticTab,
         tabBarStyle: {
-          backgroundColor: colorScheme === 'dark' ? '#000000' : '#ffffff',
-          borderTopColor: colorScheme === 'dark' ? '#1e293b' : '#f1f5f9',
+          backgroundColor: isDark ? '#000000' : '#ffffff',
+          borderTopColor: isDark ? '#1e293b' : '#f1f5f9',
         },
       }}
     >

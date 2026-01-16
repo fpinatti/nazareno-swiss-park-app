@@ -5,28 +5,37 @@ import { Stack, useRouter } from 'expo-router';
 import { ScrollView, Text, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
+
 export default function GivingScreen() {
   const router = useRouter();
-  const { isDarkMode } = usePreferenceStore();
+  const isDark = usePreferenceStore((state) => state.isDarkMode);
 
   const copyToClipboard = async (text: string) => {
+
     await Clipboard.setStringAsync(text);
     // Suggestion: show toast
   };
 
   return (
-    <SafeAreaView className="flex-1 bg-gray-50 dark:bg-slate-900">
+    <SafeAreaView
+      className={`flex-1 ${isDark ? 'dark bg-slate-800' : 'bg-gray-50'}`}
+    >
       <Stack.Screen
         options={{
           headerShown: false,
         }}
       />
-      <View className="z-10 flex-row items-center bg-white px-6 py-4 dark:bg-slate-800">
+      <View
+        className={`z-10 flex-row items-center px-6 py-4 ${
+          isDark ? 'bg-slate-800' : 'bg-white'
+        }`}
+      >
+
         <TouchableOpacity onPress={() => router.back()} className="mr-4">
           <Ionicons
             name="arrow-back"
             size={24}
-            color={isDarkMode ? '#fff' : '#1e293b'}
+            color={isDark ? '#fff' : '#1e293b'}
           />
         </TouchableOpacity>
         <Text className="text-2xl font-bold text-slate-800 dark:text-white">

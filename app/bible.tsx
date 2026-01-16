@@ -32,6 +32,7 @@ export default function BibleScreen() {
   } = usePreferenceStore();
 
   const router = useRouter();
+  const isDark = usePreferenceStore((state) => state.isDarkMode);
 
   const [verses, setVerses] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
@@ -117,7 +118,7 @@ export default function BibleScreen() {
         activeOpacity={1}
         onPress={() => setShowVersionModal(false)}
       >
-        <View className="w-4/5 rounded-2xl bg-white p-4 shadow-xl dark:bg-slate-900">
+        <View className={`w-4/5 rounded-2xl  p-4 shadow-xl ${isDark ? 'bg-slate-800' : 'bg-white'}`}>
           <Text className="mb-4 text-center text-xl font-bold dark:text-white">
             Versão da Bíblia
           </Text>
@@ -145,7 +146,7 @@ export default function BibleScreen() {
   const renderBookModal = () => (
     <Modal visible={showBookModal} transparent animationType="slide">
       <SafeAreaView className="flex-1 bg-black/50">
-        <View className="mt-20 flex-1 overflow-hidden rounded-t-3xl bg-white dark:bg-slate-900">
+        <View className={`"mt-20 flex-1 overflow-hidden rounded-t-3xl bg-white dark:bg-slate-900`}>
           <View className="flex-row items-center justify-between border-b border-gray-100 p-4 dark:border-slate-800">
             <Text className="text-xl font-bold dark:text-white">
               Selecione o Livro
@@ -154,7 +155,7 @@ export default function BibleScreen() {
               <Ionicons
                 name="close"
                 size={24}
-                color={isDarkMode ? 'white' : 'black'}
+                color={isDark ? 'white' : 'black'}
               />
             </TouchableOpacity>
           </View>
@@ -232,7 +233,7 @@ export default function BibleScreen() {
   };
 
   return (
-    <SafeAreaView className="flex-1 bg-gray-50 dark:bg-slate-900">
+    <SafeAreaView className={`flex-1 ${isDark ? 'bg-slate-900' : 'bg-gray-50'}`}>
       <Stack.Screen
         options={{
           headerShown: false,
@@ -240,12 +241,12 @@ export default function BibleScreen() {
       />
 
       {/* HEADER */}
-      <View className="z-10 flex-row items-center bg-white px-6 py-4 dark:bg-slate-800">
+      <View className={`z-10 flex-row items-center px-6 py-4 ${isDark ? 'dark bg-slate-800' : 'bg-white'}`}>
         <TouchableOpacity onPress={() => router.back()} className="mr-4">
           <Ionicons
             name="arrow-back"
             size={24}
-            color={isDarkMode ? '#fff' : '#1e293b'}
+            color={isDark ? '#fff' : '#1e293b'}
           />
         </TouchableOpacity>
         <Text className="text-2xl font-bold text-slate-800 dark:text-white">
@@ -261,7 +262,7 @@ export default function BibleScreen() {
           <Ionicons
             name="chevron-down"
             size={14}
-            color={isDarkMode ? 'white' : '#475569'}
+            color={isDark ? 'white' : '#475569'}
           />
         </TouchableOpacity>
       </View>
@@ -284,7 +285,7 @@ export default function BibleScreen() {
             )
         }} 
        /> */}
-      <View className="flex-1 bg-white dark:bg-black">
+      <View className={`flex-1 ${isDark ? 'dark bg-slate-800' : 'bg-white'}`}>
         {/* Navigation Bar */}
         <View className="flex-row items-center justify-between border-b border-gray-100 bg-white px-4 py-3 shadow-sm dark:border-slate-900 dark:bg-slate-950">
           <TouchableOpacity
@@ -294,7 +295,7 @@ export default function BibleScreen() {
             <Ionicons
               name="chevron-back"
               size={20}
-              color={isDarkMode ? 'white' : '#64748b'}
+              color={isDark ? 'white' : '#64748b'}
             />
           </TouchableOpacity>
 
@@ -339,7 +340,7 @@ export default function BibleScreen() {
             <Ionicons
               name="chevron-forward"
               size={20}
-              color={isDarkMode ? 'white' : '#64748b'}
+              color={isDark ? 'white' : '#64748b'}
             />
           </TouchableOpacity>
         </View>

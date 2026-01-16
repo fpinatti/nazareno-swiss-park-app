@@ -20,6 +20,7 @@ export default function LivePage() {
   const [videoTitle, setVideoTitle] = useState('Culto ao Vivo');
   const router = useRouter();
   const { isDarkMode } = usePreferenceStore();
+  const isDark = usePreferenceStore((state) => state.isDarkMode);
 
   const videoId = process.env.EXPO_PUBLIC_YOUTUBE_VIDEO_ID;
 
@@ -55,16 +56,16 @@ export default function LivePage() {
   }, []);
 
   return (
-    <SafeAreaView className="flex-1 bg-white dark:bg-neutral-900">
+    <SafeAreaView className={`flex-1 ${isDark ? 'dark bg-slate-800' : 'bg-white'}`}>
       <Stack.Screen options={{ headerShown: false }} />
 
       {/* Header */}
-      <View className="z-10 flex-row items-center bg-white px-6 py-4 dark:bg-slate-800">
+      <View className={`z-10 flex-row items-center px-6 py-4 ${isDark ? 'dark bg-slate-800' : 'bg-white'}`}>
         <TouchableOpacity onPress={() => router.back()} className="mr-4">
           <Ionicons
             name="arrow-back"
             size={24}
-            color={isDarkMode ? '#fff' : '#1e293b'}
+            color={isDark ? '#fff' : '#1e293b'}
           />
         </TouchableOpacity>
         <View className="h-2 w-2 animate-pulse rounded-full bg-red-500" />

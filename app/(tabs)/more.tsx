@@ -1,10 +1,13 @@
+import { usePreferenceStore } from '@/store/usePreferenceStore';
 import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 import { ScrollView, Text, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
+
 export default function MoreScreen() {
   const router = useRouter();
+  const isDark = usePreferenceStore((state) => state.isDarkMode);
 
   const menuItems = [
     { label: 'Bíblia', icon: 'book-outline', route: '/bible' },
@@ -20,7 +23,10 @@ export default function MoreScreen() {
   ];
 
   return (
-    <SafeAreaView className="flex-1 bg-white dark:bg-black">
+    <SafeAreaView
+      className={`flex-1 ${isDark ? 'dark bg-slate-800' : 'bg-white'}`}
+    >
+
       <View className="border-b border-gray-100 px-4 py-3 dark:border-gray-800">
         <Text className="text-2xl font-bold text-slate-900 dark:text-white">
           Mais

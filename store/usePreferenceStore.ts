@@ -1,4 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { Appearance } from 'react-native';
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
 
@@ -23,7 +24,7 @@ interface PreferenceState {
 export const usePreferenceStore = create<PreferenceState>()(
   persist(
     (set) => ({
-      isDarkMode: false,
+      isDarkMode: Appearance.getColorScheme() === 'dark',
       fontSize: 'Médio',
       bibleVersion: 'nvi',
       bibleBookAbbrev: 'gn',

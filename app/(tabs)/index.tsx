@@ -1,37 +1,53 @@
-import heroImg from '@/assets/images/hero-church.jpg';
 import DailyVerse from '@/components/DailyVerse';
-import EventCard, { Event } from '@/components/EventCard';
+import EventCard from '@/components/EventCard';
 import NextEvent from '@/components/NextEvent';
-import eventsData from '@/data/events.json';
+import { useEvents } from '@/hooks/useEvents';
+import { usePreferenceStore } from '@/store/usePreferenceStore';
 import { Link, useRouter } from 'expo-router';
 import { useVideoPlayer, VideoView } from 'expo-video';
-import { Image, ScrollView, Text, TouchableOpacity, View } from 'react-native';
-
+import {
+  ActivityIndicator,
+  ScrollView,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 const videoSource = require('../../assets/videos/hero-background.mp4');
 
 export default function HomeScreen() {
   const router = useRouter();
+  const isDark = usePreferenceStore((state) => state.isDarkMode);
+  const { events, loading, error } = useEvents();
   const player = useVideoPlayer(videoSource, (player) => {
     player.loop = true;
     player.muted = true;
-    player.play();
+    player.addListener('statusChange', (payload) => {
+      if (payload.status === 'readyToPlay') {
+        player.play();
+      }
+      if (payload.status === 'idle') {
+        player.play();
+      }
+    });
   });
 
-
   return (
-    <SafeAreaView className="flex-1 bg-white dark:bg-black" edges={['top']}>
+    <SafeAreaView
+      className={`flex-1 ${isDark ? 'dark bg-slate-800' : 'bg-white'}`}
+      edges={['top']}
+    >
       <ScrollView contentContainerClassName="pb-20">
         {/* Hero Section */}
-        <View className="relative h-96 w-full">
+        <View className="relative h-96 w-full" style={{ height: 384 }}>
           {/* Placeholder for ImageBackground */}
           <View className="absolute inset-0 bg-gray-600">
-            <Image
+            {/* <Image
               source={heroImg}
               className="absolute h-full w-full"
               resizeMode="cover"
-            />
+            /> */}
             <VideoView
               player={player}
               style={{ width: '100%', height: '100%' }}
@@ -104,11 +120,13 @@ export default function HomeScreen() {
             </TouchableOpacity>
           </View>
 
-          {(eventsData as Event[])
-            .filter((event) => event.tags.includes('home'))
-            .map((event) => (
-              <EventCard key={event.id} event={event} />
-            ))}
+          {loading && <ActivityIndicator size="small" color="#3b82f6" />}
+
+          {/* {error && <Text className="text-red-500">Erro ao carregar...</Text>} */}
+
+          {events.map((event) => (
+            <EventCard key={event.id} event={event} />
+          ))}
         </View>
 
         {/* Verse of Day */}

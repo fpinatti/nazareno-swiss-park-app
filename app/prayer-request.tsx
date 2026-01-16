@@ -19,7 +19,7 @@ export default function PrayerRequest() {
   const [request, setRequest] = useState('');
   const [isAnonymous, setIsAnonymous] = useState(false);
 
-  const { isDarkMode } = usePreferenceStore();
+  const isDark = usePreferenceStore((state) => state.isDarkMode);
 
   // Status state to manage the UI feedback: 'idle' | 'submitting' | 'success' | 'error'
   const [status, setStatus] = useState<
@@ -109,7 +109,7 @@ export default function PrayerRequest() {
   );
 
   return (
-    <SafeAreaView className="flex-1 bg-gray-50 dark:bg-black">
+    <SafeAreaView className={`flex-1 ${isDark ? 'dark bg-slate-800' : 'bg-white'}`}>
       <Stack.Screen
         options={{
           headerShown: false,
@@ -124,7 +124,7 @@ export default function PrayerRequest() {
           <Ionicons
             name="arrow-back"
             size={24}
-            color={isDarkMode ? '#fff' : '#1e293b'}
+            color={isDark ? '#fff' : '#1e293b'}
           />
         </TouchableOpacity>
         <Text className="text-2xl font-bold text-slate-800 dark:text-white">
@@ -148,7 +148,7 @@ export default function PrayerRequest() {
               Seu Nome (opcional)
             </Text>
             <TextInput
-              className={`w-full rounded-2xl border border-gray-200 bg-white p-4 text-lg text-slate-800 dark:border-slate-700 dark:bg-slate-800 dark:text-white ${isAnonymous ? 'opacity-50' : ''}`}
+              className={`w-full rounded-2xl border border-gray-200 bg-white p-4 text-lg text-slate-800 dark:border-slate-700 dark:bg-gray-900 dark:text-white ${isAnonymous ? 'opacity-50' : ''}`}
               placeholder="Digite seu nome"
               placeholderTextColor="#94a3b8"
               value={name}
@@ -164,7 +164,7 @@ export default function PrayerRequest() {
               Seu Pedido
             </Text>
             <TextInput
-              className={`min-h-[160px] w-full rounded-2xl border bg-white p-4 text-lg text-slate-800 dark:bg-slate-800 dark:text-white ${validationError ? 'border-red-500' : 'border-gray-200 dark:border-slate-700'}`}
+              className={`min-h-[160px] w-full rounded-2xl border bg-white p-4 text-lg text-slate-800 dark:bg-gray-900 dark:text-white ${validationError ? 'border-red-500' : 'border-gray-200 dark:border-slate-700'}`}
               placeholder="Compartilhe seu pedido de oração aqui..."
               placeholderTextColor="#94a3b8"
               value={request}

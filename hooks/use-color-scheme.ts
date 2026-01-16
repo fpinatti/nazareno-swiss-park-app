@@ -13,11 +13,16 @@ export function useColorScheme() {
 
       // On web, NativeWind sometimes needs help syncing the 'dark' class to the document element
       if (typeof document !== 'undefined') {
-        if (isDarkMode) {
-          document.documentElement.classList.add('dark');
-        } else {
-          document.documentElement.classList.remove('dark');
-        }
+        // Force the class on the html element with a slight delay to ensure it overrides defaults
+        setTimeout(() => {
+          if (isDarkMode) {
+            document.documentElement.classList.add('dark');
+            document.documentElement.style.colorScheme = 'dark';
+          } else {
+            document.documentElement.classList.remove('dark');
+            document.documentElement.style.colorScheme = 'light';
+          }
+        }, 0);
       }
     }
   }, [isDarkMode, setColorScheme, _hasHydrated]);

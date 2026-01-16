@@ -68,7 +68,7 @@ export default function Settings() {
   const router = useRouter();
   const { fontSize, setFontSize, isDarkMode, setDarkMode } =
     usePreferenceStore();
-  const isDark = isDarkMode;
+  const isDark = usePreferenceStore((state) => state.isDarkMode);
 
   const handleToggle = (value: boolean) => {
     setDarkMode(value);
@@ -82,7 +82,7 @@ export default function Settings() {
   };
 
   return (
-    <SafeAreaView className="flex-1 bg-gray-50 dark:bg-black">
+    <SafeAreaView className={`flex-1 ${isDark ? 'dark bg-slate-800' : 'bg-white'}`}>
       <Stack.Screen
         options={{
           headerShown: false,
@@ -109,7 +109,7 @@ export default function Settings() {
           <Text className="mb-4 ml-2 text-sm font-semibold uppercase tracking-widest text-slate-500 dark:text-slate-400">
             Preferências
           </Text>
-          <View className="rounded-3xl bg-white px-5 shadow-sm dark:bg-slate-800">
+          <View className="rounded-3xl bg-white px-5 shadow-sm dark:bg-gray-900">
             <SectionItem
               icon="moon-outline"
               label="Modo Escuro"

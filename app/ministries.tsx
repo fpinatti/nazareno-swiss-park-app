@@ -1,4 +1,6 @@
+import { useMinistries } from '@/hooks/useMinistries';
 import { usePreferenceStore } from '@/store/usePreferenceStore';
+import { htmlToText } from '@/utils/converter';
 import { Ionicons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Stack, useRouter } from 'expo-router';
@@ -15,8 +17,6 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import MINISTRIES from '@/data/ministries.json';
-
 if (Platform.OS === 'android') {
   if (UIManager.setLayoutAnimationEnabledExperimental) {
     UIManager.setLayoutAnimationEnabledExperimental(true);
@@ -26,7 +26,8 @@ if (Platform.OS === 'android') {
 export default function Ministries() {
   const router = useRouter();
   const [expandedId, setExpandedId] = useState<string | null>(null);
-  const { isDarkMode } = usePreferenceStore();
+  const isDark = usePreferenceStore((state) => state.isDarkMode);
+  const { ministries, loading, error } = useMinistries();
 
   const toggleExpand = (id: string) => {
     LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
@@ -34,19 +35,19 @@ export default function Ministries() {
   };
 
   return (
-    <SafeAreaView className="flex-1 bg-gray-50 dark:bg-black">
+    <SafeAreaView className={`flex-1 ${isDark ? 'dark bg-slate-800' : 'bg-gray-50'}`}>
       <Stack.Screen
         options={{
           headerShown: false,
         }}
       />
       {/* Header */}
-      <View className="z-10 flex-row items-center bg-white px-6 py-4 dark:bg-slate-800">
+      <View className={`z-10 flex-row items-center px-6 py-4 ${isDark ? 'dark bg-slate-800' : 'bg-white'}`}>
         <TouchableOpacity onPress={() => router.back()} className="mr-4">
           <Ionicons
             name="arrow-back"
             size={24}
-            color={isDarkMode ? '#fff' : '#1e293b'}
+            color={isDark ? '#fff' : '#1e293b'}
           />
         </TouchableOpacity>
         <Text className="text-2xl font-bold text-slate-800 dark:text-white">
@@ -71,7 +72,7 @@ export default function Ministries() {
           </Text>
 
           <View className="space-y-6 gap-4">
-            {MINISTRIES.map((item) => {
+            {ministries.map((item) => {
               const isExpanded = expandedId === item.id;
 
               return (
@@ -79,11 +80,11 @@ export default function Ministries() {
                   key={item.id}
                   onPress={() => toggleExpand(item.id)}
                   activeOpacity={0.9}
-                  className="overflow-hidden rounded-3xl border border-gray-100 bg-white shadow-sm transition-all dark:border-slate-700 dark:bg-slate-800"
+                  className="overflow-hidden rounded-3xl border border-gray-100 bg-white shadow-sm transition-all dark:border-slate-700 dark:bg-gray-900"
                 >
                   <View className="relative h-40 w-full">
                     <Image
-                      source={{ uri: item.image }}
+                      source={{ uri: item.featuredImage.node.sourceUrl }}
                       className="absolute h-40 w-full"
                       resizeMode="cover"
                     />
@@ -92,13 +93,13 @@ export default function Ministries() {
                       className="absolute inset-0"
                     />
                     <View className="absolute bottom-4 left-4 flex-row items-center space-x-2">
-                      <View className="h-8 w-8 items-center justify-center rounded-full bg-white/20 backdrop-blur-md">
+                      {/* <View className="h-8 w-8 items-center justify-center rounded-full bg-white/20 backdrop-blur-md">
                         <Ionicons
                           name={item.icon as any}
                           size={16}
                           color="white"
                         />
-                      </View>
+                      </View> */}
                       <Text className="text-lg font-bold text-white shadow-sm">
                         {item.title}
                       </Text>
@@ -107,13 +108,13 @@ export default function Ministries() {
 
                   <View className="p-5">
                     <Text className="leading-6 text-slate-600 dark:text-slate-300">
-                      {item.description}
+                      {htmlToText(item.excerpt)}
                     </Text>
 
                     {isExpanded && (
                       <View className="mt-4 border-t border-gray-100 pt-4 dark:border-slate-700">
                         <Text className="leading-6 text-slate-600 dark:text-slate-300">
-                          {item.details}
+                          {htmlToText(item.content)}
                         </Text>
                       </View>
                     )}

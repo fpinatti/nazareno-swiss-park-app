@@ -1,9 +1,9 @@
 import ChurchMap from '@/components/ChurchMap';
+import { usePreferenceStore } from '@/store/usePreferenceStore';
 import { Ionicons } from '@expo/vector-icons';
-// import { Image as ExpoImage } from 'expo-image';
+import { Image } from 'expo-image';
 import * as Linking from 'expo-linking';
 import {
-  Image,
   Platform,
   ScrollView,
   Text,
@@ -42,8 +42,11 @@ const PASTORS = [
 ];
 
 export default function AboutScreen() {
+  const isDark = usePreferenceStore((state) => state.isDarkMode);
   return (
-    <SafeAreaView className="flex-1 bg-white dark:bg-black">
+    <SafeAreaView
+      className={`flex-1 ${isDark ? 'dark bg-slate-800' : 'bg-white'}`}
+    >
       <ScrollView contentContainerClassName="p-4">
         <Text className="mb-4 text-2xl font-bold text-slate-900 dark:text-white">
           Bem vindo a Igreja do Nazareno Swiss Park
@@ -52,14 +55,20 @@ export default function AboutScreen() {
           Onde quer que esteja na vida, você tem um propósito. Queremos te
           ajudar a tornar-se a pessoa em que Deus sonhou!
         </Text>
-        {/* Placeholder for video */}
-        <Image source={HeroChurch} className="mb-6 h-48 w-full rounded-lg" />
+        {/* Hero Image */}
+        <View className="mb-6 aspect-video w-full overflow-hidden rounded-lg">
+          <Image
+            source={HeroChurch}
+            className="h-full w-full"
+            resizeMode="cover"
+          />
+        </View>
 
         <Text className="mb-3 text-xl font-bold text-slate-900 dark:text-white">
           Nossos valores:
         </Text>
 
-        <View className="mb-3 rounded-lg border border-gray-100 bg-slate-50 p-4 dark:border-slate-700 dark:bg-slate-800">
+        <View className="mb-3 rounded-lg border border-gray-100 bg-slate-50 p-4 dark:border-slate-700 dark:bg-gray-900">
           <Text className="text-lg font-bold text-blue-600 dark:text-blue-400">
             Comunidade Autêntica
           </Text>
@@ -67,7 +76,7 @@ export default function AboutScreen() {
             Fazendo vida juntos com honestidade e graça.
           </Text>
         </View>
-        <View className="mb-3 rounded-lg border border-gray-100 bg-slate-50 p-4 dark:border-slate-700 dark:bg-slate-800">
+        <View className="mb-3 rounded-lg border border-gray-100 bg-slate-50 p-4 dark:border-slate-700 dark:bg-gray-900">
           <Text className="text-lg font-bold text-blue-600 dark:text-blue-400">
             Verdade Biblica
           </Text>
@@ -75,7 +84,7 @@ export default function AboutScreen() {
             Fundada na palavra inabalável de Deus.
           </Text>
         </View>
-        <View className="mb-3 rounded-lg border border-gray-100 bg-slate-50 p-4 dark:border-slate-700 dark:bg-slate-800">
+        <View className="mb-3 rounded-lg border border-gray-100 bg-slate-50 p-4 dark:border-slate-700 dark:bg-gray-900">
           <Text className="text-lg font-bold text-blue-600 dark:text-blue-400">
             Generosidade Radical
           </Text>
@@ -90,13 +99,15 @@ export default function AboutScreen() {
         {PASTORS.map((pastor, index) => (
           <View
             key={index}
-            className="mb-3 flex-row rounded-lg border border-gray-100 bg-slate-50 p-4 dark:border-slate-700 dark:bg-slate-800"
+            className="mb-3 flex-row rounded-lg border border-gray-100 bg-slate-50 p-4 dark:border-slate-700 dark:bg-gray-900"
           >
-            <Image
-              source={pastor.avatar}
-              className="mr-4 h-16 w-16 rounded-full"
-              resizeMode="cover"
-            />
+            <View className="mr-4 h-16 w-16 overflow-hidden rounded-full">
+              <Image
+                source={pastor.avatar}
+                className="h-full w-full"
+                resizeMode="cover"
+              />
+            </View>
             <View className="flex-1 justify-center">
               <Text className="font-bold text-slate-900 dark:text-white">
                 {pastor.name}
