@@ -11,7 +11,8 @@
     "lint": "expo lint",
     "update-production": "eas update --branch production --message \"Manual update from task\"",
     "build-android": "eas build --platform android --profile production",
-    "build": "eas start"
+    "build": "eas start",
+    "update": "eas update --branch preview --message \"Updating\""
   },
   "dependencies": {
     "@expo/vector-icons": "^15.0.3",
