@@ -53,9 +53,7 @@
       }
     },
     "owner": "fpinatti",
-    "runtimeVersion": {
-      "policy": "appVersion"
-    },
+    "runtimeVersion": "1.0.0",
     "updates": {
       "url": "https://u.expo.dev/947367f4-71c5-4c63-872f-c54372369759"
     }
