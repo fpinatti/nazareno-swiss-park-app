@@ -42,6 +42,9 @@
       ],
       "expo-video"
     ],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": false
