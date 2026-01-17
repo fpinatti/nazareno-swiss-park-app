@@ -57,9 +57,12 @@
       }
     },
     "owner": "fpinatti",
-    "runtimeVersion": "1.0.0",
+    "runtimeVersion": "1.0.1",
     "updates": {
-      "url": "https://u.expo.dev/947367f4-71c5-4c63-872f-c54372369759"
+      "url": "https://u.expo.dev/947367f4-71c5-4c63-872f-c54372369759",
+      "enabled": true,
+      "checkAutomatically": "ON_LOAD",
+      "fallbackToCacheTimeout": 0
     }
   }
 }

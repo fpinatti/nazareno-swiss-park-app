@@ -56,11 +56,13 @@ export default function AboutScreen() {
           ajudar a tornar-se a pessoa em que Deus sonhou!
         </Text>
         {/* Hero Image */}
-        <View className="mb-6 aspect-video w-full overflow-hidden rounded-lg">
+        <View className="mb-6 aspect-video w-full overflow-hidden rounded-xl bg-slate-200 dark:bg-slate-700">
           <Image
             source={HeroChurch}
             className="h-full w-full"
-            resizeMode="cover"
+            contentFit="cover"
+            transition={300}
+            cachePolicy="memory-disk"
           />
         </View>
 
@@ -101,11 +103,13 @@ export default function AboutScreen() {
             key={index}
             className="mb-3 flex-row rounded-lg border border-gray-100 bg-slate-50 p-4 dark:border-slate-700 dark:bg-gray-900"
           >
-            <View className="mr-4 h-16 w-16 overflow-hidden rounded-full">
+            <View className="mr-4 h-16 w-16 overflow-hidden rounded-full bg-slate-200">
               <Image
                 source={pastor.avatar}
                 className="h-full w-full"
-                resizeMode="cover"
+                contentFit="cover"
+                transition={200}
+                cachePolicy="memory-disk"
               />
             </View>
             <View className="flex-1 justify-center">
