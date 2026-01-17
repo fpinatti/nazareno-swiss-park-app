@@ -4,16 +4,16 @@ import { Ionicons } from '@expo/vector-icons';
 import { Image } from 'expo-image';
 import * as Linking from 'expo-linking';
 import {
-    Platform,
-    ScrollView,
-    Text,
-    TouchableOpacity,
-    View,
+  Platform,
+  ScrollView,
+  Text,
+  TouchableOpacity,
+  View,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import AvatarJuliano from '../../assets/images/juliano.png';
-import HeroChurch from '../../assets/images/nazareno-swiss-park-about.jpg';
+import HeroChurch from '../../assets/images/nazareno-swiss-park-about.png';
 import AvatarUedson from '../../assets/images/uedson.png';
 import AvatarWlamir from '../../assets/images/wlamir.png';
 const AvatarRicardo = AvatarWlamir;

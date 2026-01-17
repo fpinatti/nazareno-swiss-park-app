@@ -1,8 +1,9 @@
 import {
-    DarkTheme,
-    DefaultTheme,
-    ThemeProvider,
+  DarkTheme,
+  DefaultTheme,
+  ThemeProvider,
 } from '@react-navigation/native';
+import * as Sentry from '@sentry/react-native';
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { View } from 'react-native';
@@ -15,6 +16,12 @@ import * as Font from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import { useEffect, useState } from 'react';
 
+// Sentry initialization
+Sentry.init({
+  dsn: process.env.EXPO_PUBLIC_SENTRY_DNS,
+  debug: false, // Set this to true to see Sentry messages in console
+});
+
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
 
@@ -22,7 +29,7 @@ export const unstable_settings = {
   anchor: '(tabs)',
 };
 
-export default function RootLayout() {
+function RootLayout() {
   const { colorScheme } = useColorScheme();
   const [loaded, setLoaded] = useState(false);
 
@@ -31,6 +38,8 @@ export default function RootLayout() {
       try {
         await Font.loadAsync(Ionicons.font);
       } catch (e) {
+        // Log font loading error to Sentry
+        Sentry.captureException(e);
         console.warn(e);
       } finally {
         setLoaded(true);
@@ -59,3 +68,5 @@ export default function RootLayout() {
     </View>
   );
 }
+
+export default Sentry.wrap(RootLayout);
