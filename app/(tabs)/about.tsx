@@ -1,10 +1,10 @@
 import ChurchMap from '@/components/ChurchMap';
 import { usePreferenceStore } from '@/store/usePreferenceStore';
 import { Ionicons } from '@expo/vector-icons';
-import { Image } from 'expo-image';
 import * as Linking from 'expo-linking';
 import {
   Platform,
+  Image as RNImage,
   ScrollView,
   Text,
   TouchableOpacity,
@@ -51,18 +51,17 @@ export default function AboutScreen() {
         <Text className="mb-4 text-2xl font-bold text-slate-900 dark:text-white">
           Bem vindo a Igreja do Nazareno Swiss Park
         </Text>
+        
         <Text className="mb-6 text-base text-slate-600 dark:text-gray-300">
           Onde quer que esteja na vida, você tem um propósito. Queremos te
           ajudar a tornar-se a pessoa em que Deus sonhou!
         </Text>
+        {/* <RNImage source={HeroChurch} style={{ width: "100%", height: "100%" }} /> */}
         {/* Hero Image */}
         <View className="mb-6 aspect-video w-full overflow-hidden rounded-xl bg-slate-200 dark:bg-slate-700">
-          <Image
+          <RNImage
             source={HeroChurch}
             className="h-full w-full"
-            contentFit="cover"
-            transition={300}
-            cachePolicy="memory-disk"
           />
         </View>
 
@@ -104,12 +103,9 @@ export default function AboutScreen() {
             className="mb-3 flex-row rounded-lg border border-gray-100 bg-slate-50 p-4 dark:border-slate-700 dark:bg-gray-900"
           >
             <View className="mr-4 h-16 w-16 overflow-hidden rounded-full bg-slate-200">
-              <Image
+              <RNImage
                 source={pastor.avatar}
                 className="h-full w-full"
-                contentFit="cover"
-                transition={200}
-                cachePolicy="memory-disk"
               />
             </View>
             <View className="flex-1 justify-center">

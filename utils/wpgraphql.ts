@@ -1,5 +1,6 @@
 import { Event } from '@/@types/events';
 import { Ministry } from '@/@types/ministries';
+import { Verse } from '@/@types/verses';
 import { GraphQLClient, gql } from 'graphql-request';
 
 const GRAPHQL_URL = process.env.EXPO_PUBLIC_WORDPRESS_GRAPHQL_URL || '';
@@ -127,6 +128,57 @@ export const fetchMinistriesGraphQL = async (): Promise<Ministry[] | []> => {
     }));
   } catch (error) {
     console.error('Error fetching ministries via WPGraphQL:', error);
+    return []
+  }
+};
+
+
+
+
+/**
+ * Query for bible verses. 
+ */
+const GET_BIBLE_VERSES_QUERY = gql`
+  query GetBibleVerses {
+    posts(where: { categoryName: "NSP_VERSICULO" }) {
+      nodes {
+        id
+        title
+        excerpt
+        content
+        date
+        uri
+        versiculos {
+          data
+        }
+      }
+    }
+  }
+`;
+
+export const fetchBibleVersesGraphQL = async (): Promise<Verse[] | []> => {
+  if (!GRAPHQL_URL) {
+    console.error('EXPO_PUBLIC_WORDPRESS_GRAPHQL_URL is not defined');
+    return [];
+  }
+
+  try {
+    const data: any = await client.request(GET_BIBLE_VERSES_QUERY);
+    
+    return data.posts.nodes.map((node: Verse) => ({
+      id: node.id,
+      title: node.title,
+      // location: node.eventos.local || null,
+      // date: new Date(node.eventos.data).toLocaleDateString('pt-BR') || null,
+      // time: new Date(node.eventos.data).toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }) || null,
+      excerpt: node.excerpt || null,
+      content: node.content || null,
+      versiculos: {
+        data: node.versiculos.data || null
+      },
+    }));
+  } catch (error) {
+    console.error('Error fetching bible verses via WPGraphQL:', error);
     return []
   }
 };
